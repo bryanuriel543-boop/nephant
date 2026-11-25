@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Nephant</title>
+  <meta name="description" content="Nephant: prototipo escolar de filtro de agua con Arduino y sensores de pH, TDS y dureza.">
+  <link rel="icon" type="image/png" href="img/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Lexend:wght@500;600;700&family=Nunito+Sans:wght@400;700&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#inicio"><img src="img/elefante.png" alt="">Nephant</a>
+    <nav class="nav" aria-label="Secciones">
+      <a href="#que-es">Qué es</a>
+      <a href="#objetivo">Objetivo</a>
+      <a href="#como-funciona">Cómo funciona</a>
+      <a href="#sensores">Sensores</a>
+      <a href="#componentes">Componentes</a>
+      <a href="#equipo">Equipo</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inicio">
+  <div class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <p class="eyebrow">Prototipo escolar · Arduino</p>
+        <p class="slogan">Transparencia en cada gota</p>
+        <h1>Agua limpia que <span>se puede medir</span></h1>
+        <p class="lede">Nephant es un filtro de agua de bajo costo que limpia el agua y, al mismo tiempo, mide su pH, sus sólidos disueltos (TDS) y su dureza para decirte si mejoró.</p>
+        <div class="cta">
+          <a class="btn btn-primary" href="#como-funciona">Ver cómo funciona</a>
+          <a class="btn btn-ghost" href="#sensores">Conocer los sensores</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="logo-badge"><img src="img/elefante.png" alt="Logo de Nephant: un elefante azul que sostiene una gota de agua con la trompa"></div>
+        <div class="lcd" role="img" aria-label="Ejemplo de lo que muestra la pantalla: pH 7.2, TDS 180 ppm, dureza 95 mg/L, agua apta">
+          <div class="lcd-screen">pH 7.2  TDS 180
+Dur 95   &gt;APTA</div>
+          <div class="lcd-foot"><span>LCD 16x2 · lectura de ejemplo</span><span class="leds"><i class="led on-ok"></i><i class="led warn"></i><i class="led bad"></i></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section id="que-es">
+    <div class="wrap two">
+      <div class="sec-head">
+        <p class="eyebrow">Qué es Nephant</p>
+        <h2>El agua no dice a simple vista si es segura</h2>
+      </div>
+      <div class="prose">
+        <p>Muchas familias toman agua de la llave, de pozo o de garrafón sin saber si es segura. A simple vista no se nota si el agua es ácida, si trae demasiadas sales disueltas o si es muy dura, y medirlo en un laboratorio es caro y tardado.</p>
+        <p>Nephant une dos ideas: <strong>limpiar el agua y comprobarlo con datos</strong>. Un filtro casero de cinco capas hace la limpieza, y un Arduino con sensores mide la calidad del agua antes y después de filtrarla.</p>
+        <p class="callout"><strong>Importante:</strong> este prototipo no mide bacterias ni metales pesados, así que no garantiza que el agua sea potable. Es una herramienta de aprendizaje y monitoreo.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="objetivo" class="band">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Nuestro objetivo</p>
+        <h2>Un filtro que se revisa a sí mismo</h2>
+      </div>
+      <div class="two">
+        <div class="goal">
+          <h3>Objetivo general</h3>
+          <p>Diseñar y construir un prototipo de filtro de agua de bajo costo que, con un Arduino y sensores de pH, TDS y dureza, mida la calidad del agua antes y después de filtrarla y muestre en una pantalla si es apta para consumo.</p>
+        </div>
+        <div>
+          <h3>Objetivos específicos</h3>
+          <ul class="checks" style="margin-top:1rem">
+            <li><span>Investigar qué valores de pH, TDS y dureza se consideran aceptables.</span></li>
+            <li><span>Comparar los tipos de filtración y elegir las capas del filtro.</span></li>
+            <li><span>Conectar y calibrar los sensores con el Arduino.</span></li>
+            <li><span>Modelar el prototipo en SketchUp y armarlo físicamente.</span></li>
+            <li><span>Comparar las mediciones del agua antes y después del filtro.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="como-funciona">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Cómo funciona</p>
+        <h2>Cinco capas y dos puntos de medición</h2>
+        <p class="lede">El agua baja por gravedad a través del filtro. Se mide al entrar y al salir, y el Arduino compara los dos resultados.</p>
+      </div>
+      <div class="filter-wrap">
+        <div class="column" role="img" aria-label="Capas del filtro de arriba hacia abajo: grava, arena fina, carbón activado, resina de intercambio iónico y algodón">
+          <div class="cup">▼ vaso de entrada · medición 1</div>
+          <div class="layer l-grava">Grava <small>partículas grandes</small></div>
+          <div class="layer l-arena">Arena fina <small>turbidez</small></div>
+          <div class="layer l-carbon">Carbón activado <small>cloro, olor, sabor</small></div>
+          <div class="layer l-resina">Resina iónica <small>dureza</small></div>
+          <div class="layer l-algodon">Algodón <small>partículas finas</small></div>
+          <div class="cup">▼ vaso de salida · medición 2</div>
+        </div>
+        <div>
+          <ol class="steps">
+            <li><div><h3>Medir el agua sin filtrar</h3><p>Se vierte el agua en el vaso de entrada y se toman lecturas de pH, TDS, temperatura y dureza estimada.</p></div></li>
+            <li><div><h3>Filtrar por gravedad</h3><p>El agua atraviesa grava, arena, carbón activado, resina y algodón. Cada capa atrapa algo distinto.</p></div></li>
+            <li><div><h3>Medir el agua filtrada</h3><p>El agua cae en el vaso de salida y se vuelven a tomar las lecturas con los mismos sensores.</p></div></li>
+            <li><div><h3>Dar el resultado</h3><p>El Arduino compara ambas mediciones, las muestra en la pantalla y enciende un LED: verde si el agua es apta, amarillo si es regular y rojo si no es apta.</p></div></li>
+          </ol>
+          <div class="chips" aria-label="Tipos de filtración que usamos">
+            <span class="chip"><b>Mecánica</b> · grava, arena, algodón</span>
+            <span class="chip"><b>Adsorción</b> · carbón activado</span>
+            <span class="chip"><b>Intercambio iónico</b> · resina</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sensores" class="band">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Sensores</p>
+        <h2>Lo que mide Nephant</h2>
+        <p class="lede">Cada 2 segundos el Arduino lee los sensores, convierte el voltaje en valores reales y los muestra en la pantalla y en la computadora.</p>
+      </div>
+      <div class="sensors">
+        <article class="sensor">
+          <span class="tag">pH · pin A0</span>
+          <h3>Acidez del agua</h3>
+          <p>Un electrodo de vidrio genera un voltaje pequeño que cambia con el pH. La escala va de 0 a 14 y el 7 es neutro.</p>
+          <div class="scale">
+            <div class="bar bar-ph"><span class="ok" aria-hidden="true"></span></div>
+            <div class="ticks"><span>0</span><span>ácida</span><span>7</span><span>básica</span><span>14</span></div>
+          </div>
+          <p class="range">Aceptable: 6.5 a 8.5</p>
+        </article>
+        <article class="sensor">
+          <span class="tag">TDS · pin A1</span>
+          <h3>Sólidos disueltos</h3>
+          <p>Dos electrodos miden qué tan bien conduce electricidad el agua. Más sales disueltas significa más conducción.</p>
+          <div class="scale">
+            <div class="seg seg-tds"><span class="c-ok"></span><span class="c-warn"></span><span class="c-bad"></span></div>
+            <div class="seg-labels"><span>0 · buena</span><span>600 · aceptable</span><span>1000+ mg/L</span></div>
+          </div>
+          <p class="range">Buena: menos de 600 mg/L · límite usual: 1000 mg/L</p>
+        </article>
+        <article class="sensor">
+          <span class="tag">Dureza · calculada</span>
+          <h3>Calcio y magnesio</h3>
+          <p>No hay un sensor de dureza barato para Arduino, así que la estimamos a partir del TDS y ajustamos el cálculo con tiras reactivas.</p>
+          <div class="scale">
+            <div class="seg seg-dur"><span class="c-ok"></span><span class="c-mid"></span><span class="c-warn"></span><span class="c-bad"></span></div>
+            <div class="seg-labels"><span>blanda</span><span>moderada</span><span>dura</span><span>muy dura</span></div>
+          </div>
+          <p class="range">mg/L de CaCO₃: 0–60 · 61–120 · 121–180 · más de 180</p>
+        </article>
+        <article class="sensor">
+          <span class="tag">DS18B20 · pin D2</span>
+          <h3>Temperatura</h3>
+          <p>Un chip digital dentro de una punta metálica sumergible mide la temperatura del agua en °C.</p>
+          <p>La usamos para corregir las lecturas de TDS y pH, porque la conducción del agua cambia con el calor.</p>
+        </article>
+      </div>
+      <p class="note">Los valores aceptables son aproximados y vienen de las guías de la OMS y de la norma mexicana NOM-127-SSA1.</p>
+    </div>
+  </section>
+
+  <section id="componentes">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Componentes</p>
+        <h2>Con qué está hecho</h2>
+      </div>
+      <div class="parts">
+        <div>
+          <h3>Electrónica</h3>
+          <ul class="list">
+            <li><b>Arduino Uno</b><span>Lee los sensores, hace los cálculos y controla la pantalla y los LED.</span></li>
+            <li><b>Sensor de pH (PH-4502C)</b><span>Electrodo y tarjeta amplificadora con salida analógica.</span></li>
+            <li><b>Sensor TDS (Gravity)</b><span>Sonda de dos electrodos con salida analógica.</span></li>
+            <li><b>Sensor DS18B20 sumergible</b><span>Temperatura del agua en forma digital.</span></li>
+            <li><b>Pantalla LCD 16x2 con I2C</b><span>Muestra pH, TDS, dureza y si el agua es apta.</span></li>
+            <li><b>LED verde, amarillo y rojo</b><span>Indican de un vistazo si el agua es buena, regular o mala.</span></li>
+            <li><b>Resistencias, protoboard y cables</b><span>220 Ω para los LED, 4.7 kΩ para el DS18B20.</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Filtro</h3>
+          <ul class="list">
+            <li><b>Botella o recipiente de 2 a 3 L</b><span>Cuerpo del filtro, en posición vertical.</span></li>
+            <li><b>Grava y arena fina</b><span>Detienen partículas grandes, pequeñas y turbidez.</span></li>
+            <li><b>Carbón activado</b><span>Quita cloro, olores y sabores.</span></li>
+            <li><b>Resina de intercambio iónico</b><span>Baja la dureza (calcio y magnesio).</span></li>
+            <li><b>Algodón o malla</b><span>Capa final que detiene partículas finas.</span></li>
+            <li><b>Dos vasos de medición</b><span>Uno para el agua antes de filtrar y otro para el agua filtrada.</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="table-scroll">
+        <table>
+          <caption>Conexiones al Arduino</caption>
+          <thead><tr><th>Componente</th><th>Señal</th><th>Pin del Arduino</th></tr></thead>
+          <tbody>
+            <tr><td>Sensor de pH</td><td>Analógica</td><td><code>A0</code></td></tr>
+            <tr><td>Sensor TDS</td><td>Analógica</td><td><code>A1</code></td></tr>
+            <tr><td>DS18B20</td><td>Digital 1-Wire</td><td><code>D2</code> + 4.7 kΩ a 5 V</td></tr>
+            <tr><td>Pantalla LCD</td><td>I2C (SDA / SCL)</td><td><code>A4</code> / <code>A5</code></td></tr>
+            <tr><td>LED verde · amarillo · rojo</td><td>Salida digital</td><td><code>D8</code> · <code>D9</code> · <code>D10</code></td></tr>
+            <tr><td>Computadora</td><td>Serial por USB</td><td>Monitor Serie</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="equipo" class="band">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Equipo</p>
+        <h2>Quiénes hacemos Nephant</h2>
+      </div>
+      <p class="lede" style="margin-bottom:1.5rem">Somos un equipo sin roles fijos: todos hacemos todo, desde la investigación hasta armar el filtro y programar el Arduino.</p>
+      <div class="team">
+        <div class="member"><div class="avatar">LB</div><b>Luna Bastida Sánchez</b></div>
+        <div class="member"><div class="avatar">AB</div><b>Ana Lucero Bernal Ángeles</b></div>
+        <div class="member"><div class="avatar">BR</div><b>Bryan Uriel Rufino Montes de Oca</b></div>
+        <div class="member"><div class="avatar">LL</div><b>Luis Alejandro León Aguilar</b></div>
+      </div>
+      <div class="school">
+        <span><b>Escuela:</b> Universidad Mexiquense del Bicentenario, UES Jiquipilco</span>
+        <span><b>Grupo:</b> 10ISC111</span>
+        <span><b>Profesora:</b> Mayra Reyes Aguilar</span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-brand">
+      <img src="img/elefante.png" alt="">
+      <div>
+        <h3>Nephant</h3>
+        <p>Transparencia en cada gota.</p>
+        <p>Prototipo escolar de filtro de agua con Arduino · UMB UES Jiquipilco · 2026.</p>
+      </div>
+    </div>
+    <div>
+      <h3>Lo que sigue</h3>
+      <ul>
+        <li>Agregar una lámpara UV para eliminar bacterias.</li>
+        <li>Agregar un módulo Bluetooth para ver los datos en el celular.</li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
